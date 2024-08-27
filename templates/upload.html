@@ -1,0 +1,284 @@
+<!DOCTYPE>
+<html>
+
+<head>
+    <title>Neurocomputing</title>
+    <link rel="stylesheet" href="./static/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <!-- NavBar Begin -->
+    <nav class="navbar bg-body-tertiary" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand">DRDO</a>
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+    <!-- NavBar End -->
+
+    <div class="parent-container">
+        <div class="sidebar">
+            <div class="accordion" id="accordionExample">
+                <div class="introduction-container">
+                    <li class="list-group-item active introduction">
+                        <a href="#one">Introduction</a>
+                    </li>
+                </div>
+
+                <div class="introduction-container">
+                    <li class="list-group-item active introduction">
+                        <a href="#two">EEG Data Formats</a>
+                    </li>
+                </div>
+                <ul>
+                    <div class="introduction-container">
+                        <li class="list-group-item active introduction">
+                            <a href="#three">.Edf format</a>
+                        </li>
+                    </div>
+                </ul>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                    </h2>
+                    <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <li class="list-group-item active">Abstract</li>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div id="one">
+                <h1 class="header">Quality assessment measure for EEG signals</h1>
+                <hr>
+                <h2 class="introduction-header">Introduction</h2>
+                <p>
+                    Neurons communicate with each other using electrical impulses that carry specific information for
+                    various
+                    activities. The electroencephalogram (EEG) serves as the conventional method for recording neural
+                    signals,
+                    encompassing diverse waves and spikes characterized by varying frequencies and amplitudes. These
+                    signals are
+                    captured through the placement of a predetermined set of electrodes on the human scalp. The
+                    intricate neural
+                    network is formed by the collaboration of billions of neurons transmitting electrical impulses.
+                </p>
+                <p>
+                    The recording of EEG signals presents several challenges. Beyond cerebral activity, there are
+                    additional
+                    sources that generate undesired electrical interferences, which become mixed with cerebral activity
+                    during
+                    recording, subsequently amplifying noise within the acquired EEG data. In certain instances, the
+                    signal can be
+                    entirely corrupted, necessitating reacquisition. The quality of EEG signals is particularly impacted
+                    by noise
+                    stemming primarily from non-cerebral activities occurring at the time of recording.
+                </p>
+                <p>
+                    Non-cerebral activities can be classified into two primary categories. The first category
+                    encompasses
+                    physiological activities originating from organs other than the brain within the human body, such as
+                    muscles
+                    and limbs. The second category involves external environmental factors. The impact of an eye blink
+                    on the
+                    acquired EEG signal quality is illustrated in <a href="#fig1">Figure 1</a>.
+                </p>
+                <div class="img-container">
+                    <img src="{{ url_for('static', filename='eeg1.jpg') }}" alt="" class="eye-eeg-img" id="fig1" />
+
+
+                    <a>
+                        Fig. 1. Eye blinking/movement eﬀect on the EEG signal.
+                    </a>
+                </div>
+                <p>
+                    Numerous advancements in feature extraction and classification techniques have emerged in recent
+                    years, aimed
+                    at enhancing the performance of Brain-Computer Interface (BCI) applications. Nonetheless, the
+                    effectiveness of
+                    BCI algorithms is significantly influenced by the EEG data recording process. Traditionally, the
+                    approach
+                    involves visually inspecting the recorded signal and discarding highly corrupted segments that are
+                    evidently
+                    tainted by noise. Yet, certain inherent noise characteristics within the signal remain
+                    imperceptible. The
+                    ability to gauge the quality of recorded EEG signals is crucial to identify these attributes and
+                    emphasize
+                    only the reliable segments.
+                </p>
+                <p>
+                    The principal objective of this section is to devise an automated quality assessment metric for
+                    input EEG
+                    signals by generating automated scores that quantify signal quality during recording. These scores
+                    are
+                    established on biological and mathematical features that necessitate signal processing techniques.
+                    This
+                    concept bears multiple advantages, including:
+                </p>
+                <ul>
+                    <li>
+                        Real-time quality assessment: <br />
+                        During EEG signal recording, our system will promptly issue alerts if any channel exhibits
+                        abnormal
+                        behavior. This empowers researchers to decide whether to halt recording to address noise-related
+                        concerns or
+                        proceed with the recording process.
+                    </li>
+                    <li>
+                        Significant role in BCI applications: <br />
+                        The proposed scores can serve as input for BCI applications, enhancing their accuracy. Brain
+                        commands can be
+                        treated with varying degrees of confidence based on signal quality.
+                    </li>
+                </ul>
+                <p>
+                    Throughout the EEG acquisition procedure, electrodes capture signals originating from a specific
+                    number of
+                    neurons. The challenge arises from the limited control over the number of neurons captured, making
+                    any
+                    excessive spikes detrimental to the Signal-to-Noise Ratio (SNR). While it's impractical to record
+                    neural
+                    signals devoid of biological noise, detecting or removing such noise post-recording and analysis is
+                    feasible.
+                    Managing technical factors hinges on understanding the SNR magnitude. The intricacy in minimizing
+                    technical
+                    factors stems from the SNR level itself. To validate our scores' accuracy, we meticulously recorded
+                    a clean
+                    signal and subsequently introduced noise. The noise percentage was controlled based on the known SNR
+                    value of
+                    the original signal.
+                </p>
+                <p>
+                    Addressing the conundrum of reducing environmental noise necessitates a clear demarcation between
+                    signal and
+                    noise, while safeguarding signal quality during noise removal. Employing the wavelet transform
+                    method, as
+                    proposed previously, is one approach to noise reduction. However, this method assumes that signal
+                    magnitude
+                    consistently outweighs noise magnitude in any wavelet representation—a presumption not universally
+                    valid for
+                    neural signal recordings. This research's objective isn't solely noise reduction in EEG signals but
+                    primarily
+                    to appraise EEG signal quality.
+                </p>
+
+                <div id="two">
+                    <h2>EEG Data Formats</h2>
+                    <p>
+                        Electroencephalography (EEG) stands as a pivotal technology in the realm of neuroscience and
+                        neuroimaging,
+                        allowing the non-invasive monitoring of electrical activity within the human brain. To harness
+                        the immense
+                        potential of EEG data and derive meaningful insights, it is crucial to understand the various
+                        data formats
+                        that encapsulate this neural information. EEG data formats serve as standardized structures that
+                        facilitate
+                        the representation, storage, and sharing of EEG recordings and their associated metadata. These
+                        formats play
+                        an indispensable role in enabling seamless communication between EEG acquisition systems,
+                        analysis software,
+                        and researchers across the globe.
+                    </p>
+                    <p>
+                        As the field of neuroscience continues to evolve, EEG data formats play an instrumental role in
+                        ensuring
+                        interoperability, preservation, and collaboration among researchers and institutions. A nuanced
+                        understanding
+                        of these formats empowers scientists to efficiently harness the wealth of neural insights
+                        concealed within
+                        EEG
+                        recordings, ultimately advancing our understanding of cognition, behavior, and neurological
+                        disorders.
+                    </p>
+
+                    <div id="three">
+                        <h4>.EDF Format</h4>
+                        <p>The .EDF (European Data Format) file format is a widely used standard for storing and
+                            exchanging biomedical
+                            time-series data. Developed by the European Society for Sleep Research and the European Data
+                            Format Committee,
+                            this format is specifically designed to accommodate various types of physiological signals,
+                            such as
+                            electroencephalography (EEG), electrocardiography (ECG), and electromyography (EMG), among
+                            others.</p>
+
+                        <p>The .EDF file format is renowned for its flexibility and compatibility with different data
+                            acquisition systems and
+                            software applications. It stores multi-channel data in a structured manner, allowing for the
+                            representation of
+                            diverse physiological measurements collected simultaneously. Each data record consists of a
+                            header section that
+                            holds essential metadata, followed by the corresponding signal samples.</p>
+
+                        <p>Key features of the .EDF format include its simplicity, making it accessible for both data
+                            storage and
+                            transmission, and its ability to handle long-term recordings, crucial in medical and
+                            research contexts.
+                            Additionally, the format provides information about signal characteristics, such as sampling
+                            frequency, physical
+                            units, and calibration, enabling accurate interpretation of the data.</p>
+
+                        <p>To ensure interoperability and widespread usability, various software tools and libraries
+                            support the .EDF format,
+                            allowing researchers and clinicians to analyze and manipulate the recorded physiological
+                            data. The accompanying
+                            .EDF+ format extends the standard to include annotations, markers, and events, enhancing its
+                            utility in
+                            applications like sleep studies and event-related data analysis.</p>
+
+                        <p>In essence, the .EDF file format plays an integral role in the field of biomedical signal
+                            processing, enabling
+                            efficient data exchange, long-term monitoring, and accurate analysis of physiological
+                            signals across diverse
+                            medical and research domains.</p>
+
+                        <p1><a href="dialog.html"></a> To get output of .EDF File</p1>
+                    </div>
+
+                    <button type="button" class="btn btn-primary" id="convert-btn" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">
+                        Click Here
+                    </button>
+
+                    <div class="modal" tabindex="-1" id="exampleModal">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form action="http://localhost:5000/edf/upload" method="POST"
+                                    enctype="multipart/form-data">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">.Edf file Convertor</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Get your EEG Signals from your .Edf file with incredible accuracy</p>
+                                        <input type="file" name="file" />
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Close</button>
+                                        <div class="file btn btn-lg btn-primary">
+                                            Submit
+                                            <input class="submit-button" type="submit" />
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+</body>
+
+</html>

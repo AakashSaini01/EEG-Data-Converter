@@ -1,0 +1,179 @@
+.navbar {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1 !important;
+}
+
+body {
+  background-color: #a2c9d3;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+}
+
+.parent-container {
+  display: flex;
+}  
+
+a {
+  text-decoration: none !important;
+  font-weight: bold;
+}
+
+h1{
+  text-decoration: none !important;
+  font-weight: bold;
+  text-align:center;
+  max-width: 1050px;
+} 
+
+h2, h4 { 
+  text-decoration: none !important;
+  font-weight: bold;
+}
+
+hr {
+  height: 10px;
+  margin: 20px 5px;
+  max-width: 1050px;
+  size: 10px;
+}
+
+.sidebar {
+  box-sizing: content-box;
+  flex: 0.20;
+  top: 100px;
+  height: calc(100vh - 200px);
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-y: auto;
+  position: sticky;
+}
+
+
+.menu-item {
+  background: none;
+  border: none;
+}
+
+.accordion-item {
+  border: none !important;
+  border-bottom: 1px solid #eeeeee !important;
+}
+
+.accordion {
+  width: 100%;
+}
+
+.accordion-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.list-group-item {
+  padding-left: 60px !important;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.introduction-container .list-group-item {
+  padding-left: 29px !important;
+  border-radius: 2%;
+}
+
+.content {
+  flex: 0.80;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 16px 32px;
+}
+
+ .header {
+  margin-bottom: 35px;
+}
+
+.introduction-header {
+  margin-bottom: 16px;
+}
+
+p {
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 22px !important;
+  max-width: 1050px;
+  line-height: 25px;
+  font-size: 18.8px;
+  word-spacing: 2.2px;
+  text-align:justify;
+}
+
+p1 {
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 22px !important;
+  line-height: 25px;
+  font-size: 20.9px;
+  font-weight: bold;
+}
+
+#convert-btn{
+size: auto;
+margin: 10px;
+padding: 10px;
+}
+
+
+li {
+  margin-bottom: 5px;
+  font-size: 18.8px;
+  font-family: Arial, Helvetica, sans-serif; 
+  word-spacing: 2px;
+  text-align:justify;
+  max-width: 950px;
+}
+
+.img-container {
+  text-align: center;
+  margin: 20px 30px;
+  max-width: 740px;
+  text-align: center;
+}
+
+.eye-eeg-img {
+  background-size: cover;
+  height: 390px;
+}
+
+.img-alt {
+  font-size: 12px;
+  margin-top: 8px;
+}
+
+
+.file {
+  position: relative;
+  overflow: hidden;
+  height: 40px;
+  font-size: 16px !important;
+}
+
+.file input {
+  position: absolute;
+  font-size: 60px;
+  opacity: 0;
+  right: 0;
+  top: 0;
+}
+
+.submit-button {
+  position: absolute;
+  font-size: 60px;
+  opacity: 0;
+  right: 0;
+  top: 0;
+}
+
+.modal-backdrop {
+  z-index: -1 !important;
+}
